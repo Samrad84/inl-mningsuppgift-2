@@ -61,3 +61,10 @@
   border-radius: 30px !important;
   box-shadow: none !important;
 }
+.results{
+  padding: 100px 0;
+}
+h1 {
+  text-align: center;
+  padding-top: 30px;
+}
