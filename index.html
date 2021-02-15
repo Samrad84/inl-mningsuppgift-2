@@ -1,12 +1,31 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-<title>Page Title</title>
+    <title>Travel Website</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
-
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-
+    <section class="header">
+        <div class="container">
+            <img src="images\travellogo_21.png" />
+            <button type="button" class="login-btn">Login</button>
+        </div>
+        <h1>Get Information About Your Travel</h1>
+        <p>Check The Weather And Tourist Attractive Places</p>
+        <div class="input-group">
+            <input id="SearchTerm" type="text" class="form-control" placeholder="Search Country or City ">
+            <div class="input-group-append">
+                <button type="submit" class="input-group-text btn">Search</button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <ul id="resultsList"></ul>
+    </section>
+    <script src="script.js"></script>
 </body>
+
 </html>
