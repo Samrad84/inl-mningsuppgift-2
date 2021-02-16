@@ -18,15 +18,16 @@
         <div class="input-group">
             <input id="SearchTerm" type="text" class="form-control" placeholder="Search Country or City ">
             <div class="input-group-append">
-                <button type="submit" class="input-group-text btn">Search</button>
+                <button id = "submitBt" type="submit" class="input-group-text btn" onclick="displayResults(results)">Search</button>
             </div>
         </div>
-    </section>
-    <section class="results">
-        <h1>Results Show</h1>
+        <h1 id = "City"></h1>
         
-        <ul id="resultsList"></ul>
+        <div id="resultsList"></div>
     </section>
+   
+      
+
     <script src="script.js"></script>
 </body>
 

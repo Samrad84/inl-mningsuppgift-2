@@ -1,4 +1,4 @@
-const searchShow = async (query) => {
+function searchShow(query) {
   let client_id = "KB3VKVREN4S40G1J5O1MYZ2TGMCJZBMROPZWF4APWD5QX0CS";
   let client_secret = "SGJAXV4FCLK5WRJTVASDPQXGV5NTCTSE4K4YJ12LS3HSWFST";
   const api_key = "a7ae1818efc8758ead2b2a5a64eab221";
@@ -12,31 +12,32 @@ const searchShow = async (query) => {
   const url2 =
     "https://api.foursquare.com/v2/venues/search?ll=40.7,-74&client_id=KB3VKVREN4S40G1J5O1MYZ2TGMCJZBMROPZWF4APWD5QX0CS&client_secret=SGJAXV4FCLK5WRJTVASDPQXGV5NTCTSE4K4YJ12LS3HSWFST&v=20201002";
 
-  //fetch(url1)
-  // .then((response) => response.json())
+  fetch(url1)
+    .then((response) => response.json())
+    .then((jsonData) => {
+      results = jsonData.weather;
+      console.log(results);
 
-  // .then((jsonData) => {
-  //const results = jsonData.map(element => element.main);
-  const res = await fetch(url1);
-  let results = await res.json();
-  console.log(results);
-  displayResults(results);
-  // console.log(jsonData);
-  console.log(results);
-};
+      // console.log(jsonData);
+    });
+}
 
-function displayResults(results) {
+function displayResults(resultes) {
   const List = document.getElementById("resultsList");
-  results.forEach((result) => {
+  resultes.forEach((result) => {
     const element = document.createElement("li");
-    element.innerText = result;
-    List.appendChild(element);
+    element.innerText = result.description;
+List.appendChild(element);
+
   });
 }
 
 window.onload = () => {
   const SearchTermElement = document.getElementById("SearchTerm");
-  SearchTermElement.onkeyup = (event) => {
+  SearchTermElement.onkeypress = (event) => {
     searchShow(SearchTermElement.value);
+    const City = document.getElementById("City");
+City.innerText = SearchTermElement.value;
+  
   };
 };
