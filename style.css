@@ -11,12 +11,12 @@
   background-attachment: fixed;
   padding-top: 20px;
   text-align: center;
-  color: #fff;
+  color: rgb(230, 24, 24);
 }
 .header img {
   width: 120px;
   float: left;
-  border: 2px solid #fff;
+  border: 2px solid rgb(199, 29, 29);
   border-radius: 30px;
 }
 .login-btn {
@@ -25,7 +25,7 @@
   outline: none !important;
   border: 2px solid #fff;
   border-radius: 50px;
-  background: transparent;
+  background: rgb(99, 99, 192);
   color: #fff;
   float: right;
 }
@@ -37,6 +37,9 @@
 .header p {
   margin: 18px 0;
 }
+.header section{
+  background-color: cadetblue;
+}
 
 .input-group {
   width: 90%;
@@ -47,11 +50,13 @@
   padding: 2px;
 }
 
+
 .form-control {
   border: 0 !important;
   border-radius: 30px !important;
   margin: 2px;
   box-shadow: none !important;
+  text-align: center;
 }
 .input-group-text {
   width: 100px;
@@ -61,10 +66,69 @@
   border-radius: 30px !important;
   box-shadow: none !important;
 }
-.results{
-  padding: 100px 0;
+
+
+.flex{
+ 
+
 }
-h1 {
-  text-align: center;
-  padding-top: 30px;
+#container1{
+  position: relative;
+  width: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
+.container1 .card{
+  position:relative ;
+  max-width: 450px;
+  background: #fff;
+  margin:10px;
+  padding: 15px;
+  display: flex;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.container1 .card .imgBx{
+  max-width: 150px;
+  flex: 0 0 150px;
+}
+.container1 .card .imgBx img {
+  max-width: 100%;
+  
+}
+.container1 .card .content{
+ margin-left: 20px;
+}
+@media (max-width: 991px){
+  .container1{
+    flex-direction: column;
+  }
+
+}
+@media (max-width: 768px){
+  .container1{
+    flex-direction: column;
+  }
+  .container1 .card {
+    flex-direction: column;
+    max-width: 350px;
+  }
+  .container1 .card .imgBx {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+
+.container1 .card .content{
+
+  margin-left: 0px;
+ }
+
+}
+
+
+
