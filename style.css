@@ -68,28 +68,30 @@
 }
 
 
-.flex{
- 
 
-}
 #container1{
   position: relative;
-  width: 1000;
+  width: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  height: 100px;
+
 }
+
+
 .container1 .card{
   position:relative ;
-  max-width: 450px;
+  max-width: 250px;
   background: #fff;
-  margin:10px;
+  margin:100px;
   padding: 15px;
   display: flex;
-   display: flex;
-  justify-content: center;
+ justify-content: center;
   align-items: center;
+  float: left;
+
 
 }
 .container1 .card .imgBx{

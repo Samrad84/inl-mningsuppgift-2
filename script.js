@@ -67,15 +67,15 @@ function displayWeatherResults(results1) {
     console.log(result1);
 
     let parent = document.querySelector("main");
-    var child = document.createElement("div");
+    //var child = document.createElement("div");
   
-    var land = document.createElement("p1");
+    var child = document.createElement("h4");
 
   
-    land.innerText = result1.description;
+    child.innerText = result1.description;
 
-    child.className = "card";
-    child.append(land);
+    //child.className = "card";
+    //child.append(land);
     parent.append(child);
   });
 }
@@ -89,6 +89,8 @@ function displayPlaceResults(results) {
     var pa = document.createElement("p");
     var city = document.createElement("h1");
 
+
+parent.id = "main";
     child.className = "card";
     let venuesId = result.id;
     const newUrl =
@@ -101,8 +103,7 @@ function displayPlaceResults(results) {
     city.innerText = result.location.city;
     title.innerText = result.name;
     pa.innerText = result.location.formattedAddress;
-
-    //imeg.src = imgsrc;
+    imeg.src = imgsrc;
   
     child.append(city);
     child.append(imeg);
@@ -169,7 +170,7 @@ function FarenhitetoC(tempe) {
 
 window.onload = () => {
   const SearchTermElement = document.getElementById("SearchTerm");
-  SearchTermElement.onkeyup = (event) => {
+  SearchTermElement.onkeypress = (event) => {
     searchShow(SearchTermElement.value);
   };
 };
