@@ -30,9 +30,10 @@
   float: right;
 }
 .header h1 {
-  padding-top: 260px;
+padding: 5px;
   padding-bottom: 0;
   font-size: 55px;
+  display: flex;
 }
 .header p {
   margin: 18px 0;
@@ -84,27 +85,25 @@
 .container1 .card{
   position:relative ;
   max-width: 250px;
-  background: #fff;
+  background: rgb(188, 126, 204);
   margin:100px;
-  padding: 15px;
+  padding: 5px;
+
   display: flex;
  justify-content: center;
   align-items: center;
   float: left;
 
 
+
 }
-.container1 .card .imgBx{
-  max-width: 150px;
-  flex: 0 0 150px;
-}
-.container1 .card .imgBx img {
+
+
+.container1 .card .imeg {
   max-width: 100%;
   
 }
-.container1 .card .content{
- margin-left: 20px;
-}
+
 @media (max-width: 991px){
   .container1{
     flex-direction: column;
