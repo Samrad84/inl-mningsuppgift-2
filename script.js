@@ -36,31 +36,37 @@ function searchShow(query) {
     client_secret +
     "&v=20180323&limit=1&ll=40.7243,-74.0018&near=" +
     query;
- // Här hämtar jag data ur foursquare Api, med hjälp av Query och input value urdragen 
- //search input. En array innehåller stadens sevärdigheter.
+  // Här hämtar jag data ur foursquare Api, med hjälp av Query och input value urdragen
+  //search input. En array innehåller stadens sevärdigheter.
   fetch(SearchCityUrl)
     .then((response) => response.json())
     .then((jsonData) => {
       results = jsonData.response.venues;
     });
 
-    //Här hämtar jag väder prognos från openweather api (Typ av väder).
+  //Här hämtar jag väder prognos från openweather api (Typ av väder).
   fetch(weatherUrl)
     .then((response) => response.json())
     .then((jsonData) => {
       results1 = jsonData.weather;
     });
 
-
   fetch(weatherUrl)
     .then((response) => response.json())
     .then((jsonData) => {
       results3 = jsonData.main;
+      let tempa = results3.humidity;
+      let parent = document.getElementById("weather");
+      let tempPlace=  document.createElement("h4");
+     tempPlace.innerText = FarenhitetoC(tempa);
+     parent.append(tempPlace);
+
     });
 
   displayWeatherResults(results1);
   displayPlaceResults(results);
-  displayThetemp(results3);
+  //displayThetemp(results3);
+  displayWeatherResults(result3);
 }
 
 // I dem funktionerna nedan bryter jag ner arrayen urdragen via fetch från apier
@@ -69,16 +75,21 @@ function displayWeatherResults(results1) {
   results1.forEach((result1) => {
     console.log(result1);
 
-    let parent = document.querySelector("main");
-    var child = document.createElement("h4");
+    let parent = document.getElementById("weather");
+    let child = document.createElement("div");
+    let title = document.createElement("h3");
+    let descr = document.createElement("h2");
 
-    var title = document.createElement("h3");
 
-    child.innerText = result1.description;
+
+    descr.innerText = result1.description;
     title.innerText = result1.main;
 
+
+    
+    child.append(descr);
+    child.append(title);
     parent.append(child);
-    parent.append(title);
   });
 }
 
@@ -90,7 +101,7 @@ function displayPlaceResults(results) {
     var imeg = document.createElement("img");
     var title = document.createElement("h2");
     var pa = document.createElement("p");
-    var city = document.createElement("h1");
+    var city = document.createElement("h3");
 
     parent.id = "main";
     child.className = "card";
@@ -102,8 +113,11 @@ function displayPlaceResults(results) {
       "/photos?&client_id=KB3VKVREN4S40G1J5O1MYZ2TGMCJZBMROPZWF4APWD5QX0CS&client_secret=3GU4Y12IHV3SDB0CFAMTNGS4QEPBSWN3Q0IG2URPWWCOASE1&v=20201002";
     let src = getImageUrl(newUrl);
     imeg.src = src;
+    const categorie = result.categories;
+    categorie.forEach((categ) => {
+      city.innerText = categ.pluralName;
+    });
 
-    city.innerText = result.location.city;
     title.innerText = result.name;
     pa.innerText = result.location.formattedAddress;
 
@@ -115,21 +129,7 @@ function displayPlaceResults(results) {
   });
 }
 
-function displayThetemp(results3) {
-  results3.forEach((result3) => {
-    let parent = document.querySelector("main");
-    var child = document.createElement("div");
 
-    var tempe = document.createElement("h3");
-    var temp = result3.temp;
-    let tempa = FarenhitetoC(temp);
-    tempe.innerText = tempa;
-
-    child.className = "card";
-    child.append(tempe);
-    parent.append(child);
-  });
-}
 
 function getVenuesId(url) {
   fetch(url)
@@ -161,13 +161,13 @@ function getImageUrl(newUrl) {
 }
 
 function FarenhitetoC(tempe) {
-  const temp = (tempe - 32) * 0.55;
-  return temp;
+  var temp = (tempe - 32) / 5.9 ;
+  return Math.trunc(temp) ;
 }
 
 window.onload = () => {
   const SearchTermElement = document.getElementById("SearchTerm");
-  SearchTermElement.onkeyup = (event) => {
+  SearchTermElement.onclick = (event) => {
     searchShow(SearchTermElement.value);
   };
 };
